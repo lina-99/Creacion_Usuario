@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
 <body>
-    <H1>Usuarios </H1>
+    <H1> </H1>
     <div class="contenedor">
     
     <table>

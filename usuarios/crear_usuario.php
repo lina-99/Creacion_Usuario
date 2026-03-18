@@ -10,19 +10,34 @@
 <body>
 
     <div class="contenedor">
-        <form action="usuario_guardado.php"  method="post">
-            <label for="">Usuario</label>
-            <input type="text" name="Nombre_Usuario" value="">
-            <label for="">Telefono</label >
-            <input type="text" name="Telefono_Usuario" value="" >
-            <label for="">Correo</label>
-            <input type="text" name="Correo_Usuario" value="">
-            <label for="">Contraseña</label>
-            <input type="text" name="Contraseña_usuario" value="">
-            <button type="submit">Guardar</button>
-            <button><a href="usuario.php">Cancelar</a></button>
+     <table>  
+        <thead>
+            <tr>
+                <form action="usuario_guardado.php"  method="post">
+                <th><label for="">Usuario</label></th>
+                <td><input type="text" name="Nombre_Usuario" value=""></td>
+                
+            </tr>
             
-        </form>
-    </div>
+            <tr>
+            <th><label for="">Telefono</label></th>
+               <td><input type="text" name="Telefono_Usuario" value="" ></td>
+            </tr>
+
+            <tr>
+                <th><label for="">Correo</label></th>
+                <td><input type="text" name="Correo_Usuario" value=""></td>
+            </tr>
+                
+                <th><label for="">Contraseña</label></th>
+                <td><input type="text" name="Contraseña_usuario" value=""></td>
+            </tr>
+            </form>
+        </thead>
+    </table>
+                <button type="submit">Guardar</button>
+                <button><a href="usuario.php">Cancelar</a></button>
+</div>
+
 </body>
 </html>
