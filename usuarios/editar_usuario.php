@@ -1,10 +1,16 @@
 <?php
+session_start();
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header('Location: index.php');
+    exit;
+}
+
 require '../conexion/conexion.php';
 $conn = connection();
 $id =$_GET['id_usuario'];
 $consulta = mysqli_query($conn,"SELECT * FROM  `usuarios` WHERE `Id_usario` = '$id';");
 
-$resultado = mysqli_fetch_assoc($consulta)
+$resultado = mysqli_fetch_assoc($consulta);
 
 
 
@@ -14,7 +20,7 @@ $resultado = mysqli_fetch_assoc($consulta)
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="estilos.css">
@@ -22,7 +28,8 @@ $resultado = mysqli_fetch_assoc($consulta)
     <title>Editar</title>
 </head>
 <body>
-    
+    <h1 class="titulo-centro">Editar usuario</h1>
+    <div class="contenedor form-centro">
         <form action="actualizar_datos.php?id_usuario=<?php echo $resultado['Id_usario'] ?>"  method="post">
             <label for="">Usuario</label>
             <input type="text" name="Nombre_Usuario" value="<?php echo $resultado ['Nombre_Usuario'] ?>">
@@ -33,9 +40,9 @@ $resultado = mysqli_fetch_assoc($consulta)
             <label for="">Contraseña</label>
             <input type="text" name="Contraseña_usuario" value="<?php echo $resultado ['Contraseña_usuario'] ?>">
             <button  type="submit">Guardar</button>
-            <button><a href="usuario.php">Cancelar</a></button>
+            <a href="usuario.php" class="btn-crear">Cancelar</a>
             
         </form>
-    
+    </div>
 </body>
 </html>

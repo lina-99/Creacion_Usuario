@@ -1,43 +1,50 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear</title>
+    <title>Crear Usuario</title>
 </head>
 <body>
+<?php
+session_start();
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header('Location: index.php');
+    exit;
+}
+?>
+    <h1 class="titulo-centro">Crear usuario</h1>
 
     <div class="contenedor">
-     <table>  
-        <thead>
-            <tr>
-                <form action="usuario_guardado.php"  method="post">
-                <th><label for="">Usuario</label></th>
-                <td><input type="text" name="Nombre_Usuario" value=""></td>
-                
-            </tr>
-            
-            <tr>
-            <th><label for="">Telefono</label></th>
-               <td><input type="text" name="Telefono_Usuario" value="" ></td>
-            </tr>
+        <form action="usuario_guardado.php" method="POST">
+            <table>
+                <thead>
+                    <tr>
+                        <th><label>Usuario</label></th>
+                        <td><input type="text" name="Nombre_Usuario"></td>
+                    </tr>
+                    <tr>
+                        <th><label>Teléfono</label></th>
+                        <td><input type="text" name="Telefono_Usuario"></td>
+                    </tr>
+                    <tr>
+                        <th><label>Correo</label></th>
+                        <td><input type="text" name="Correo_Usuario"></td>
+                    </tr>
+                    <tr>
+                        <th><label>Contraseña</label></th>
+                        <td><input type="password" name="Contraseña_usuario"></td>
+                    </tr>
+                </thead>
+            </table>
 
-            <tr>
-                <th><label for="">Correo</label></th>
-                <td><input type="text" name="Correo_Usuario" value=""></td>
-            </tr>
-                
-                <th><label for="">Contraseña</label></th>
-                <td><input type="text" name="Contraseña_usuario" value=""></td>
-            </tr>
-            </form>
-        </thead>
-    </table>
+            <div class="botones">
                 <button type="submit">Guardar</button>
-                <button><a href="usuario.php">Cancelar</a></button>
-</div>
+                <a href="usuario.php" class="btn-crear">Cancelar</a>
+            </div>
+        </form>
+    </div>
 
 </body>
 </html>
